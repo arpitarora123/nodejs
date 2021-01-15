@@ -1,0 +1,27 @@
+<html>
+    <head>
+        WebSocket client playground.
+    </head>
+    <body>
+        LT: <div id="lt"></demo>
+
+            <script>
+                var msg = "";
+                var ws = new  WebSocket('ws://localhost:9090');
+                ws.onopen = function() {
+                    console.log('Websocket client connected');
+                    setInterval(function () {
+                        ws.send("Hi this is Client-stock1");
+                    }, 1000)
+                };
+
+                ws.onmessage = function(e) {
+                    msg = e.data;
+                    document.getElementById("lt").innerHTML = msg;
+                    console.log("Received: '" + e.data + "'");
+                };
+        
+                
+            </script>
+    </body>
+</html>
